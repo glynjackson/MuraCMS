@@ -572,7 +572,7 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 	<cfset var rsMembershipIDs =""/>
 	
 	<cfquery name="rsMembershipIDs"  datasource="#variables.configBean.getReadOnlyDatasource()#" username="#variables.configBean.getReadOnlyDbUsername()#" password="#variables.configBean.getReadOnlyDbPassword()#">
-	Select tusers.userID AS groupID from tusers 
+	Select tusers.userID AS groupID, tusersmemb.groupid from tusers 
 	inner join tusersmemb on tusers.userid=tusersmemb.groupid
 	left join tfiles on tusers.photoFileId=tfiles.fileid
 	where tusersmemb.userid=<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.userID#">
